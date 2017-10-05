@@ -1,7 +1,7 @@
-function [par,gbest]=updatepar(par,gbest,frame,H,W,model)
+function [par,gbest,A]=updatepar(par,gbest,frame,H,W,A)
 par.x=par.x+par.vx;
 par.y=par.y+par.vy;
-fit=getfit(par.x,par.y,frame,H,W,model);
+fit=getfit(par.x,par.y,frame,H,W,A);
 
 c1=1;c2=1;
 
