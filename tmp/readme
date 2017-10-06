@@ -1,0 +1,13 @@
+This is a simple demo for the object tracking.
+Author: Bin Zhao
+Character:imhist of the frame for all rgb channel.
+Fitness value: the inside-angle between two vector(model vector and observe vector)
+Model update: update after each frame(due to the connectivy of two frame)
+Reason of imhist: 
+	The most important target is to get the fitness value quickly.
+	Then imhist is the summation of each pixel. So we could do initially to keep the 2d-presummation.
+	And each calculation of the fitness value take O(3*t) rather then O(H*W) this is a real improvement.
+
+Not finish:
+	1) calculate the value by brute force.
+	2) do not satisified with multiple object tracking.
