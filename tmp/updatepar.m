@@ -1,8 +1,7 @@
-function [par,gbest,tmpmodel]=updatepar(par,gbest,frame,H,W,model)
+function [par,gbest]=updatepar(par,gbest,frame,H,W,model)
 par.x=par.x+par.vx;
 par.y=par.y+par.vy;
-tmpmodel=model;
-[fit,tmp]=getfit(par.x,par.y,frame,H,W,model);
+fit=getfit(par.x,par.y,frame,H,W,model);
 
 c1=1;c2=1;
 
@@ -15,5 +14,4 @@ if(fit>par.fit)
 end
 if(fit>gbest.fit)
     gbest=par;
-    tmpmodel=tmp;
 end

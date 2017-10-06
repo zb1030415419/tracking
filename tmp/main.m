@@ -1,10 +1,10 @@
 clear;clc;
 
-video=VideoReader('~/SAMPLE/tmp1.mov');
+video=VideoReader('~/test.mp4');
 
 if(hasFrame(video))
     frame=readFrame(video);
-    %frame=rgb2gray(frame);
+    frame=imresize(frame,1.05,'bicubic');
     imshow(frame);
     rect=getrect;
     W=int32(rect(3));H=int32(rect(4));
@@ -14,8 +14,8 @@ else
     exit(-1);
 end
 while(hasFrame(video))
-    frame=readFrame(video);%frame=rgb2gray(frame);
-    [x,y,model]=pso(frame,H,W,model);
-    imshow(frame);hold on;plot(x,y,'g*');plot(x+W,y+H,'g*');hold off;
-    pause(0.5);
+    frame=readFrame(video);frame=imresize(frame,1.05,'bicubic');
+    [x,y,model]=pso(frame,H,W,model,x,y);
+    imshow(frame);rectangle('Position',[x y W H],'edgeColor','r');hold off;
+    pause(0.01);
 end
